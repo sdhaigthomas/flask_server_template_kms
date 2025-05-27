@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from blueprints.non_auth import non_auth
 from blueprints.auth import auth
 from extensions import db, login_manager
-from keys import get_key
+from utils.key_checker import key_checker
 
 #app factory
 def create_app()->object:
@@ -16,8 +16,8 @@ def create_app()->object:
     app.register_blueprint(non_auth)
     app.register_blueprint(auth)
 
-    #database shi
-    app.config['SECRET_KEY'] = get_key()
+    #db setup
+    app.config['SECRET_KEY'] = key_checker()
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///../database/database.db"
 
     #import all models here

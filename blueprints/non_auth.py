@@ -1,7 +1,7 @@
 #imports
 from blueprints.blueprint_template import *
-from blueprints.utils.signup_val import signup_val
-from blueprints.utils.password_val import password_val
+from utils.signup_val import signup_val
+from utils.password_val import password_val
 
 #makes blueprint object
 non_auth = setup("non_auth")
