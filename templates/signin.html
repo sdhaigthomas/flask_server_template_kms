@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <form action="{{ url_for('non_auth.signin') }}" method="POST">
+            <input placeholder="Username" name="username"> <br>
+            <input type="password" placeholder="Password" name="password"><br>
+            <input type="submit" value="Sign-in"></input>
+    </form>
+
+{% endblock %}
