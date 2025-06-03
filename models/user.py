@@ -10,5 +10,5 @@ from extensions import db
 class User(db.Model, UserMixin):
     id: Mapped[int] = mapped_column(primary_key=True)
     username: Mapped[str] = mapped_column(unique=True)
-    #email: Mapped[str]
+    email: Mapped[str]
     password: Mapped[str]

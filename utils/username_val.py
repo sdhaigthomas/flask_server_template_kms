@@ -7,5 +7,7 @@ def username_val(username:str, maxlen:int=15, minlen:int=3)->str:
         to_return = f"Username is too long! Maximum length is {maxlen}"
     elif length < minlen:
         to_return = f"Username is too short! The minimum length is {minlen}"
-    return to_return
+    #print(f"Username {to_return}")
+    if to_return: return False, to_return
+    else: return True, to_return
         

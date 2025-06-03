@@ -52,7 +52,7 @@ def signup():
         get = request.form.get
 
         #send form to validator
-        form_OK = signup_val(get=get, User=User, password_val=password_val, username_val=username_val)
+        form_OK = signup_val(get=get, User=User, password_val=password_val, username_val=username_val, email_val=email_val)
 
         #flash any issues found by the func
         if form_OK[0] == False:
@@ -62,9 +62,10 @@ def signup():
         else:
             #all OK, add data to db
             db.session.add(
-                User(username=get("username"),password=make_hash(get("password")))
+                User(username=get("username"),password=make_hash(get("password")),email="wip@gmail.com")
             )
             db.session.commit()
+            flash("Account created sucsessfully! Please sign-in")
             return redirect(url_for("non_auth.signin"))# add a redirect to user area.
 
     return render_template("signup.html")
