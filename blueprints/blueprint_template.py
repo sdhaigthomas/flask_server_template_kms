@@ -3,9 +3,13 @@ from flask import Flask, render_template, Blueprint, request, flash, redirect, u
 from flask_login import login_user, login_required, logout_user
 from utils.username_val import username_val
 from utils.email_val import email_val
+from datetime import datetime
 from utils.encryption import make_hash, check
 from extensions import login_manager, db
 from models.user import User
+
+now = datetime.now()
+time = now.strftime
 
 #makes blueprint object 
 def setup(name:str)->object:

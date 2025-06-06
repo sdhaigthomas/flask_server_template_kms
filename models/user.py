@@ -12,3 +12,5 @@ class User(db.Model, UserMixin):
     username: Mapped[str] = mapped_column(unique=True)
     email: Mapped[str]
     password: Mapped[str]
+    date_created: Mapped[str]
+    account_enabled: Mapped[bool]

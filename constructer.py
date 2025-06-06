@@ -6,6 +6,7 @@ from blueprints.non_auth import non_auth
 from blueprints.auth import auth
 from extensions import db, login_manager
 from utils.key_checker import key_checker
+from utils.encryption import make_hash
 
 #app factory
 def create_app()->object:
@@ -29,6 +30,15 @@ def create_app()->object:
     #make the db file, if not already there
     with app.app_context():
         db.create_all()
+
+    db.session.add(
+        User("Sam",
+        password=make_hash("cheesegromit"),
+        email="sdhaigthomas@gmail.com", 
+        account_enabled=True, 
+        date_created="N/A")
+    )
+    db.session.commit()
 
     #css page
     @app.route('/style.css')

@@ -62,7 +62,11 @@ def signup():
         else:
             #all OK, add data to db
             db.session.add(
-                User(username=get("username"),password=make_hash(get("password")),email="wip@gmail.com")
+                User(username=get("username"),
+                password=make_hash(get("password")),
+                email=get("email"), 
+                account_enabled=False, 
+                date_created=time("%d/%m/%Y %H:%M:%S"))
             )
             db.session.commit()
             flash("Account created sucsessfully! Please sign-in")

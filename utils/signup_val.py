@@ -34,4 +34,4 @@ def signup_val(get:object, User:object, password_val:object, username_val:object
         if User.query.filter_by(username=username).first() == None:
             return True, None
 
-    return False, "Please enter a username"
+    return False, "Username occupied"

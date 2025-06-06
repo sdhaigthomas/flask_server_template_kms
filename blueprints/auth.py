@@ -10,9 +10,21 @@ auth = setup("auth")
 def user_area():
     return render_template("user_area.html")
 
-#user area
+#sign users out
 @auth.route('/signout')
 @login_required
 def signout():
     logout_user()
     return redirect(url_for("non_auth.index"))
+
+#various admin things
+@auth.route('/admin')
+@login_required
+def admin():
+    if not current_user.username == "sam":
+        return redirect(url_for("auth.user_area"))
+
+    to_enable = User.query.filter_by(
+        account_enabled=False
+        ).all()
+    return render_template("admin.html", to_enable=to_enable)
